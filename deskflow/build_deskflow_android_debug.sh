@@ -16,6 +16,7 @@ SRC_DIR="$WORK_ROOT/FreeRDP-$FREERDP_VERSION"
 STUDIO_DIR="$SRC_DIR/client/Android/Studio"
 OUTPUT_DIR="${GITHUB_WORKSPACE:-$PWD}/deskflow-output"
 FINAL_APK="$OUTPUT_DIR/DeskFlow-v${VERSION_NAME}-arm64-v8a-debug.apk"
+LOG="$OUTPUT_DIR/DeskFlow-v${VERSION_NAME}-build.log"
 
 section() {
   echo
@@ -30,6 +31,7 @@ fail() {
 }
 
 mkdir -p "$WORK_ROOT" "$OUTPUT_DIR"
+exec > >(tee "$LOG") 2>&1
 
 section "1. 验证 GitHub Ubuntu 构建环境"
 [ -n "$ANDROID_HOME" ] || fail "ANDROID_HOME 未设置"
