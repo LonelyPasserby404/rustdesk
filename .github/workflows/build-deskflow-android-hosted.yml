@@ -53,12 +53,14 @@ jobs:
           chmod +x deskflow/build_deskflow_android_debug.sh
           deskflow/build_deskflow_android_debug.sh
 
-      - name: Upload DeskFlow APK
+      - name: Upload DeskFlow build outputs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: DeskFlow-v0.1.0-test-arm64-v8a
           retention-days: 30
-          if-no-files-found: error
+          if-no-files-found: warn
           path: |
             deskflow-output/DeskFlow-v0.1.0-test-arm64-v8a-debug.apk
             deskflow-output/DeskFlow-v0.1.0-test-arm64-v8a-debug.apk.sha256
+            deskflow-output/DeskFlow-v0.1.0-test-build.log
