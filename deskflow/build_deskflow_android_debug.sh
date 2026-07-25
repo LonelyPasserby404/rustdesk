@@ -5,8 +5,8 @@ FREERDP_VERSION="${FREERDP_VERSION:-3.30.0}"
 APP_ID="${APP_ID:-com.zhaoyufeng.deskflow}"
 VERSION_NAME="${VERSION_NAME:-0.1.0-test}"
 VERSION_CODE="${VERSION_CODE:-100}"
-COMPILE_API="${COMPILE_API:-36}"
-BUILD_TOOLS_VERSION="${BUILD_TOOLS_VERSION:-36.0.0}"
+COMPILE_API="${COMPILE_API:-37}"
+BUILD_TOOLS_VERSION="${BUILD_TOOLS_VERSION:-37.0.0}"
 NDK_VERSION="${NDK_VERSION:-29.0.13113456}"
 CMAKE_VERSION="${CMAKE_VERSION:-4.1.2}"
 ANDROID_HOME="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
@@ -47,7 +47,7 @@ java -version
 
 section "2. 安装官方 Android SDK/NDK/CMake"
 yes | "$SDKMANAGER" --licenses >/dev/null || true
-"$SDKMANAGER" \
+"$SDKMANAGER" --channel=3 \
   "platform-tools" \
   "platforms;android-$COMPILE_API" \
   "build-tools;$BUILD_TOOLS_VERSION" \
